@@ -1,7 +1,7 @@
 // Exercise 1
 #[allow(dead_code)]
 fn exercise1(color: &str) -> String {
-    todo!()
+    let a = b;
 }
 
 // Exercise 2
