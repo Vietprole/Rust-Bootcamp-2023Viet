@@ -11,10 +11,16 @@ fn sum(x: i32, y: i32) -> i32{
 pub fn sum_one_to_n(n: u32) -> u32 {
     // your code for summing all digits from 1 to `n` (inclusive) should go
     // here (you can remove the sample return of `0`)
-    if n == 1{
-        1;
+    let mut sum = 0;
+    let mut i = n;
+    loop{
+        if i == 0{
+            break;
+        }
+        sum += i;
+        i = i - 1;
     }
-    n + sum_one_to_n(n-1)
+    sum
 }
 
 // Exercise 3
@@ -23,6 +29,9 @@ pub fn sum_one_to_n(n: u32) -> u32 {
 // Output: Average Number 
 fn calculate_average(numbers: &[f64]) -> f64 {
     let mut sum = 0.0;
+    if numbers.len() == 0{
+        return 0.0;
+    }
     for i in numbers{
         sum += i;
     }

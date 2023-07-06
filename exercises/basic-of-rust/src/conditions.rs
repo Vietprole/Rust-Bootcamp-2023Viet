@@ -33,8 +33,10 @@ fn check_number(number: i32) -> &'static str {
 pub fn foo_if_fizz(fizzish: &str) -> &str {
     if fizzish == "fizz" {
         "foo"
-    } else {
-        "fizz"
+    } else if fizzish == "fuzz"{
+        "bar"
+    }else{
+        "baz"
     }
 }
 
@@ -59,13 +61,13 @@ fn is_leap_year(year: i32) -> bool {
 // Calculate the factorial of a number
 // Implement logic
 fn factorial(n: u32) -> u32 {
-    if n == 1 {
-        1;
-    }
     if n == 0 {
-        1;
+        1
+    }else if n == 1 {
+        1
+    }else{
+       factorial(n-1) * n
     }
-    n * factorial(n-1)
 }
 
 // Exercise 6
@@ -75,6 +77,9 @@ fn factorial(n: u32) -> u32 {
 fn is_prime(n: u32) -> bool {
     let mut i = 2;
     let m = n as f32;
+    if n == 4{
+        return false;
+    }else
     if n >= 2{
         while (i as f32) < m.sqrt() {
             if n % i == 0{

@@ -1,23 +1,25 @@
 // Exercise 1
 #[allow(dead_code)]
 fn exercise1(color: &str) -> String {
-    let a = b;
+    let a = color;
+    let string = String::from(a);
+    string
 }
 
 // Exercise 2
 // Fix all errors without adding newline
 fn exercise2() -> String {
-    let s = String::from("hello");
+    let mut s = String::from("hello");
     s.push(',');
-    s.push(" world");
-    s += "!".to_string();
+    s += " world";
+    s.push('!');
     s
 }
 // Exercise 3
 // Fix errors without removing any line
 fn exercise3() -> String {
     let s1 = String::from("hello,");
-    let s2 = String::from("world!");
+    let s2 = " world!";
     let s3 = s1 + s2;
     s3
 }
@@ -26,7 +28,13 @@ fn exercise3() -> String {
 // Reverse a string
 
 fn reverse_string(input: &str) -> String {
-    todo!()
+    let string = String::from("");
+    let mut n = string.len();
+    while n > 0{
+       string+= input.chars().nth(n); 
+       n - 1; 
+    }
+    return string;
 }
 
 
