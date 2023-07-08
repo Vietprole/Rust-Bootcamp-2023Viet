@@ -28,20 +28,28 @@ fn exercise3() -> String {
 // Reverse a string
 
 fn reverse_string(input: &str) -> String {
-    let string = String::from("");
-    let mut n = string.len();
-    while n > 0{
-       string+= input.chars().nth(n); 
-       n - 1; 
+    let mut res = String::new();
+    println!("{}", res);
+    let mut i = input.len();
+    println!("{}", i);
+    while i > 0{
+        res += &input[input.len() - (input.len() - i) - 1..input.len() - (input.len() - i)];
+        i = i - 1;
     }
-    return string;
+    res
 }
 
 
 // Exercise 5
 // Check if a string is a palindrome
 fn is_palindrome(word: &str) -> bool {
-    todo!()
+    let i = word.len();
+    while i > 0{
+        if &word[] == &word[]{
+            true;
+        }
+    }
+    false
 }
 
 // Exercise 6
