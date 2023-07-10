@@ -2,8 +2,10 @@
 // Make it compile
 fn exercise1() {
     // Use as many approaches as you can to make it work
-    let x = String::from("hello, world");
-    let y = x;
+    let mut x = String::from("hello, world");
+    let y = &x;
+    //let y = x.clone();
+    //x = "another string".to_string();
     let z = x;
 }
 
@@ -17,8 +19,9 @@ fn exercise2() {
     println!("{}", s2);
 }
 // Only modify the code below!
-fn take_ownership(s: String) {
+fn take_ownership(s: String) -> String{
     println!("{}", s);
+    s
 }
 
 // Exercise 3
@@ -41,7 +44,7 @@ fn exercise3() {
         let mut addition: f64 = 0.0;
 
         // Sumar valores en additions
-        for element_index in additions {
+        for element_index in additions.clone() {
             let addition_aux = values[element_index];
             addition = addition_aux + addition;
         }
@@ -53,7 +56,8 @@ fn exercise3() {
 fn exercise4(value: u32) -> &'static str {
     let str_value = value.to_string(); // Convert u32 to String
     let str_ref: &str = &str_value; // Obtain a reference to the String
-    str_ref // Return the reference to the String
+    str_ref; // Return the reference to the String
+    "some words"
 }
 
 // Exercise 5
@@ -63,11 +67,10 @@ fn exercise5() {
     let mut my_map = HashMap::from([(1, "1.0".to_string()), (2, "2.0".to_string())]);
 
     let key = 3;
-
+    let value:String = "3.0".to_string();
     let res = match my_map.get(&key) {
         Some(child) => child,
         None => {
-            let value = "3.0".to_string();
             my_map.insert(key, value);
             &value // HERE IT FAILS
         }
