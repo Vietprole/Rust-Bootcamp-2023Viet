@@ -44,7 +44,9 @@ fn exercise3() {
         let mut addition: f64 = 0.0;
 
         // Sumar valores en additions
+        //for element_index in &additions {
         for element_index in additions.clone() {
+            //let addition_aux = values[*element_index];
             let addition_aux = values[element_index];
             addition = addition_aux + addition;
         }
@@ -75,6 +77,7 @@ fn exercise5() {
         None => {
             my_map.insert(key, value.clone());
             &value // HERE IT FAILS
+            //my_map.get(&key).unwrap()
         }
     };
 
@@ -87,14 +90,19 @@ fn exercise5() {
 use std::io;
 
 fn exercise6() {
-    let mut prev_key: &str = "";
+    //let mut prev_key: &str = "";
+    let mut prev_key = String::new();
 
     for line in io::stdin().lines() {
         let s = line.unwrap();
 
+        //let mut prev_key = String::new();
+
         let data: Vec<&str> = s.split("\t").collect();
         if prev_key.len() == 0 {
-            prev_key = data[0];
+            //prev_key = data[0];
+            //prev_key = data[0].to_string();
+            prev_key = data[0].to_owned();
         }
     }
 }
@@ -103,11 +111,11 @@ fn exercise6() {
 // Make it compile
 fn exercise7() {
     let mut v: Vec<&str> = Vec::new();
-    {
+    //{
         let chars = [b'x', b'y', b'z'];
         let s: &str = std::str::from_utf8(&chars).unwrap();
         v.push(&s);
-    }
+    //}
     println!("{:?}", v);
 }
 
