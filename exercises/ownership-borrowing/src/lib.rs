@@ -131,7 +131,7 @@ fn exercise8() {
             .read_line(&mut add_input)
             .expect("Failed to read line");
 
-        let add_vec: Vec<&str> = add_input.trim()[..].split_whitespace().collect();
+        let add_vec: Vec<&'static str> = add_input.trim()[..].split_whitespace().collect();
 
         if add_vec.len() < 1 {
             println!("Incorrect input, try again");
