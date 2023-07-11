@@ -67,11 +67,13 @@ fn exercise5() {
     let mut my_map = HashMap::from([(1, "1.0".to_string()), (2, "2.0".to_string())]);
 
     let key = 3;
+    
     let value:String = "3.0".to_string();
+
     let res = match my_map.get(&key) {
         Some(child) => child,
         None => {
-            my_map.insert(key, value);
+            my_map.insert(key, value.clone());
             &value // HERE IT FAILS
         }
     };
