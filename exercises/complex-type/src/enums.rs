@@ -7,19 +7,28 @@ enum MessageOne {
     Write(String),
     ChangeColor(i32, i32, i32),
 }
-fn show_message(msg: MessageOne) {
-    println!("{}", msg);
+impl MessageOne {
+    fn show_message(msg: MessageOne) {
+        //println!("{}", msg);
+        match msg {
+            MessageOne::Quit => println!("Quit"),
+            MessageOne::Move { x, y } => println!("Move to ({},{})", x, y),
+            MessageOne::Write(string) => println!("{}", string),
+            MessageOne::ChangeColor(a, b, c) => println!("Change color to {}, {}, {}", a, b, c )
+        }
+    }
 }
 
+
 fn exercise1() {
-    let msgs: __ = [
+    let msgs:[MessageOne; 3] = [
         MessageOne::Quit,
         MessageOne::Move { x: 1, y: 3 },
         MessageOne::ChangeColor(255, 255, 0),
     ];
 
     for msg in msgs {
-        show_message(msg)
+        MessageOne::show_message(msg);
     }
 }
 
