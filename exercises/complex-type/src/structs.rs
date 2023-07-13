@@ -67,18 +67,18 @@ impl Calculator {
         Calculator { value: 0 }
     }
 
-    fn add(&self, num: i32) {
+    fn add(&mut self, num: i32){
         self.value += num;
     }
 
-    fn subtract(&self, num: i32) {
+    fn subtract(&mut self, num: i32) {
         self.value -= num;
     }
-    fn clear(&self) {
+    fn clear(&mut self) {
         self.value = 0;
     }
 
-    fn get_value(self) -> i32 {
+    fn get_value(&self) -> i32 {
         self.value
     }
 }
@@ -162,9 +162,10 @@ impl Package {
     fn is_international(&self) -> bool {
         // Something goes here...
         if self.recipient_country == self.sender_country{
-            false;
+            false
+        }else{
+            true
         }
-        true
     }
 
     fn get_fees(&self, cents_per_gram: i32) -> i32 {
