@@ -2,10 +2,16 @@
 // Fix the error
 // Make it compile
 // Run test
+#[derive(Debug)]
 struct Person {
     name: String,
     age: u8,
     hobby: String
+}
+impl PartialEq for Person {
+    fn eq(&self, other: &Self) -> bool {
+        self.name == other.name && self.age == other.age && self.hobby == other.hobby
+    }
 }
 fn exercise1() -> Person {
     let age = 30;
@@ -39,12 +45,12 @@ impl Agent {
 
     // Get the name of the person
     fn get_name(&self) -> &str {
-        todo!()
+        &self.name
     }
 
     // Get the age of the person
     fn get_age(&self) -> u32 {
-        todo!()
+        self.age
     }
 }
 
@@ -65,10 +71,10 @@ impl Calculator {
         self.value += num;
     }
 
-    fn subtract(mut self, num: i32) {
+    fn subtract(&self, num: i32) {
         self.value -= num;
     }
-    fn clear(self) {
+    fn clear(&self) {
         self.value = 0;
     }
 
@@ -99,7 +105,7 @@ fn exercise4() {
         
     };
 
-    println!("user: {:#?}", u1);
+    println!("user: {:#?}", u2);
 
 }
 
@@ -122,10 +128,10 @@ fn exercise5() {
     });
 
     
-    let moved = foos[0];
+    let moved = &foos[0];
 
     
-    let moved_field = foos[0].str_val;
+    let moved_field = &foos[0].str_val;
 }
 
 // Exercise 6
@@ -153,12 +159,17 @@ impl Package {
         }
     }
 
-    fn is_international(&self) -> ??? {
+    fn is_international(&self) -> bool {
         // Something goes here...
+        if self.recipient_country == self.sender_country{
+            false;
+        }
+        true
     }
 
-    fn get_fees(&self, cents_per_gram: i32) -> ??? {
+    fn get_fees(&self, cents_per_gram: i32) -> i32 {
         // Something goes here...
+        self.weight_in_grams * cents_per_gram
     }
 }
 
