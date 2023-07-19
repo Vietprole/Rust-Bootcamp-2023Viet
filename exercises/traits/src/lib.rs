@@ -73,11 +73,9 @@ fn static_dispatch<T:Foo>(x:T) {
 }
 
 // Implement below with trait objects and parameters
-fn dynamic_dispatch(xs: &[&dyn Foo]) {
+fn dynamic_dispatch(x: &dyn Foo) {
     //todo!()
-    for x in xs{
-        x.method();
-    }
+    x.method();
 }
 
 // Exercise 5 
@@ -120,12 +118,24 @@ trait Container {
     fn is_empty(&self) -> bool;
 }
 
-struct Stack {
-    items: Vec<u8>,
+struct Stack <T>{
+    items: Vec<T>,
 }
 
 //TODO implement Container for Stack
+impl <T> Container for Stack<T>{
+    type Item = T;
+    fn insert(&mut self, item: Self::Item) {
+        self.items.push(item);
+    }
+    fn remove(&mut self) -> Option<Self::Item> {
+        self.items.pop()
+    }
 
+    fn is_empty(&self) -> bool {
+        self.items.is_empty()
+    }
+}
 
 
 #[cfg(test)]
@@ -175,7 +185,7 @@ mod tests {
         let y = 8u8;
     
         // Draw x.
-        draw_with_box(__);
+        draw_with_box(Box::new(x));
     
         // Draw y.
         draw_with_ref(&y);
