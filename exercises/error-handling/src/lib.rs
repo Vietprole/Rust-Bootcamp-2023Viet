@@ -2,7 +2,7 @@
 // Make it compile in unit test
 // Run tests
 // Hint: Convert Option to Result
-fn generate_nametag_text(name: String) -> Option<String> {
+fn generate_nametag_text(name: String) -> Result<String, ParseIntError> {
     if name.is_empty() {
         // Empty names aren't allowed.
         None
