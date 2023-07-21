@@ -1,0 +1,8 @@
+{
+    "rust-analyzer.linkedProjects": [
+        ".\\exercises\\error-handling\\Cargo.toml",
+        ".\\final-project\\state-machine-atm\\Cargo.toml",
+        ".\\exercises\\error-handling\\Cargo.toml",
+    ],
+    "rust-analyzer.showUnlinkedFileNotification": false
+}
