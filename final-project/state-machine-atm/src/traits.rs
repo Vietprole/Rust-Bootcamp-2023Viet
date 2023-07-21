@@ -18,7 +18,11 @@ pub trait StateMachine {
 
 // Simple helper to do some hashing.
 fn hash<T>(t: &T) -> u64 {
-    todo!("Final Project");
+    //todo!("Final Project");
+    let mut hasher = DefaultHasher::new();
+    t.hash(&mut hasher);
+    let result = hasher.finish();
+    result
 }
 
 // Test for hash function 
