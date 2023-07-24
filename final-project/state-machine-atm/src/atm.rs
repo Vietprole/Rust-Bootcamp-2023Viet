@@ -73,7 +73,11 @@ impl Default for Auth {
 impl From<Key> for &str {
     fn from(value: Key) -> &'static str {
         match value{
-           _ => "hello"     
+            Key::One => "1",
+            Key::Two => "2",
+            Key::Three => "3",
+            Key::Four => "4",
+            Key::Enter => "enter"    
         }
     }
 }
@@ -89,7 +93,20 @@ impl StateMachine for Atm {
     // Use a hash function to verify the PIN both before and after the user presses the Enter key.
     fn next_state(starting_state: &Self::State, t: &Self::Transition) -> Self::State {
         //todo!("Final project")
-        
+        match starting_state.expected_pin_hash {
+            Auth::Waiting => match t {
+                Action::SwipeCard() => Auth::Authenticating(()),
+                Action::PressKey() => Auth::Waiting
+            }
+            Auth::Authenticating() => match t {
+                Action::SwipeCard() => Auth::Authenticating(()),
+                Action::PressKey() => Auth::Waiting
+            }
+            Auth::Authenticated() => match t {
+                Action::SwipeCard() => Auth::Authenticating(()),
+                Action::PressKey() => Auth::Waiting
+            }
+        }
     }
 }
 
